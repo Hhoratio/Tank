@@ -1,8 +1,11 @@
 import grass from "./static/images/grass/grass.png";
-import tank from "./static/images/tank/bottom.gif";
 import wall from "./static/images/wall/wall.gif";
 import water from './static//images/water/water.gif'
 import cement from './static/images/wall/cement.gif'
+import tankTop from "./static/images/tank/top.gif";
+import tankBottom from "./static/images/tank/bottom.gif";
+import tankLeft from "./static/images/tank/left.gif";
+import tankRight from "./static/images/tank/right.gif";
 
 export default {
     canvas: {
@@ -17,13 +20,17 @@ export default {
         grass: 70,
         wall: 70,
         water: 30,
-        cement: 20
+        cement: 20,
+        tank: 30
     },
     image: {
         grass,
-        tank,
         wall,
         cement,
         water,
+        tankTop,
+        tankBottom,
+        tankLeft,
+        tankRight,
     },
 };

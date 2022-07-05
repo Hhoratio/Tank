@@ -1,6 +1,7 @@
 import config from "../config";
 
 export default abstract class modelAbstract {
+	abstract name: string
 
 	abstract render(): void 
 
@@ -10,4 +11,4 @@ export default abstract class modelAbstract {
 	protected draw(img: HTMLImageElement) {
 		this.canvas.drawImage(img, this.x, this.y, config.picture.width, config.picture.height);
 	}
-}
+} 

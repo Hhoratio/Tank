@@ -12,7 +12,7 @@ class Straw extends canvasAbstract {
     }
 
     render(): void {
-        super.createModels();
+        super.createModels(); 
         super.renderModels();
     }
 }

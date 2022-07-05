@@ -24,7 +24,7 @@ class Position {
     }
 
     /* 隨機生成座標位置 */
-    protected position() {
+    public position() {
         return {
             x: Math.floor(Math.random() * (config.canvas.width / config.picture.width)) * config.picture.width,
             y: Math.floor(Math.random() * ((config.canvas.height / config.picture.height) - 5)) * config.picture.height + config.picture.height * 2,
