@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import modelCement from '../models/modelCement'
 
-class Cement extends canvasAbstract implements ModelType {
+class Cement extends canvasAbstract implements canvasInterface {
     num(): number {
         return config.quantity.cement;
     }

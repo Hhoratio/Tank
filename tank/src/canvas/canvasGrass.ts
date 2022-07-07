@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import modelGrass from "../models/modelGrass";
 
-class Straw extends canvasAbstract {
+class Straw extends canvasAbstract implements canvasInterface {
     num(): number {
         return config.quantity.grass;
     }

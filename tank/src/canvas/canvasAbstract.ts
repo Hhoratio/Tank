@@ -6,7 +6,7 @@ import position from "../toolsService/position";
 
 export default abstract class canvasAbstract {
     /* 用來存放畫布裡的相關數據 */
-    protected models: modelInterface[] = [];
+    public models: modelInterface[] = [];
 
     /* 定義抽象 render() 使其子類調用 drowModel () */
     abstract render(): void;
@@ -44,6 +44,8 @@ export default abstract class canvasAbstract {
     
 
     protected renderModels() {
-        this.models.forEach(model => model.render())    
+        this.models.forEach(model => {
+           model.render()
+        })    
     }
 }

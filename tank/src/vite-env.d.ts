@@ -6,6 +6,9 @@ interface ModelConstructor {
 
 interface modelInterface {
     render(): void
+    image(): HTMLImageElement
+    x: number
+    y: number
 }
 
 interface canvasInterface {

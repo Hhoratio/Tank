@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import modelWater from '../models/modelWater'
 
-class Water extends canvasAbstract {
+class Water extends canvasAbstract implements canvasInterface {
     num(): number {
         return config.quantity.water;
     }

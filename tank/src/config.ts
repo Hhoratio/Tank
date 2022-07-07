@@ -33,4 +33,12 @@ export default {
         tankLeft,
         tankRight,
     },
+    tanks: {
+        enemy: {
+            speed: 20
+        },
+        self: {
+            speed: 50
+        }
+    }
 };
