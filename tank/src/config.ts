@@ -6,6 +6,8 @@ import tankTop from "./static/images/tank/top.gif";
 import tankBottom from "./static/images/tank/bottom.gif";
 import tankLeft from "./static/images/tank/left.gif";
 import tankRight from "./static/images/tank/right.gif";
+import bullet from "./static/images/bullet/bullet.jpg"
+import symbol from "./static/images/symbol/symbol.png"
 
 export default {
     canvas: {
@@ -18,9 +20,9 @@ export default {
     },
     quantity: {
         grass: 70,
-        wall: 70,
+        wall: 100,
         water: 30,
-        cement: 20,
+        cement: 30,
         tank: 30
     },
     image: {
@@ -32,6 +34,8 @@ export default {
         tankBottom,
         tankLeft,
         tankRight,
+        bullet,
+        symbol,
     },
     tanks: {
         enemy: {

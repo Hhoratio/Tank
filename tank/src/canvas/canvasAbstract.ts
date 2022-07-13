@@ -5,17 +5,18 @@ import config from "../config";
 import position from "../toolsService/position";
 
 export default abstract class canvasAbstract {
-    /* 用來存放畫布裡的相關數據 */
+    /* 用來存放畫布裡的實例 */
     public models: modelInterface[] = [];
 
     /* 定義抽象 render() 使其子類調用 drowModel () */
     abstract render(): void;
     abstract num(): number;
-    abstract model(): ModelConstructor; 
+    abstract model(): ModelConstructor | BulletModelConstructor; 
 
     constructor(
+        protected name: string,
         protected el: HTMLCanvasElement = document.createElement("canvas"),
-        protected canvas = el.getContext("2d")!,
+        public ctx = el.getContext("2d")!,
         protected app = document.querySelector("#app") as HTMLDivElement
     ) {
         this.createCanvas();
@@ -27,25 +28,29 @@ export default abstract class canvasAbstract {
         /* 定義 canvas 的長、寬 */
         this.el.width = config.canvas.width;
         this.el.height = config.canvas.height;
-
+        this.el.setAttribute('name', this.name)
+        
         /* 將 canvas 插入 app 裡 */
-        this.app.insertAdjacentElement("afterbegin", this.el);
+        this.app.appendChild(this.el);
     }
 
 
     /* 繪製模型 */
     protected createModels() {
         position.getCollection(this.num()).forEach(position => {
-            const model = this.model();
-            const instance = new model(this.canvas, position.x, position.y);
+            const model = this.model() as ModelConstructor;
+            const instance = new model(position.x, position.y);
             this.models.push(instance)
         });
     }
     
+ 
+    public renderModels() {
+        this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
+        this.models.forEach(model => model.render()) 
+    }
 
-    protected renderModels() {
-        this.models.forEach(model => {
-           model.render()
-        })    
+    public removeModel(model: modelInterface) {
+        this.models = this.models.filter(m => m != model)
     }
 }

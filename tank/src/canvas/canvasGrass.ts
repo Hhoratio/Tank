@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import modelGrass from "../models/modelGrass";
 
-class Straw extends canvasAbstract implements canvasInterface {
+export default new (class extends canvasAbstract implements canvasInterface {
     num(): number {
         return config.quantity.grass;
     }
@@ -15,6 +15,5 @@ class Straw extends canvasAbstract implements canvasInterface {
         super.createModels(); 
         super.renderModels();
     }
-}
+})('grass')
 
-export default new Straw();

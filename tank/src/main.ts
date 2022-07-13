@@ -1,11 +1,13 @@
 import "./global.scss";
 import config from "./config";
+import { promise } from "./toolsService/image";
 import grass from "./canvas/canvasGrass";
 import wall from './canvas/canvasWall'
 import water from './canvas/canvasWater'
 import cement from './canvas/canvasCement'
 import tank from './canvas/canvasTank'
-import { promise } from "./toolsService/image";
+import bullet from "./canvas/canvasBullet";
+import boss from "./canvas/canvasSymbol";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.width = `${config.canvas.width}px`;
@@ -21,6 +23,8 @@ async function bootstrap() {
     water.render();
     cement.render();
     tank.render();
+    bullet.render()
+    boss.render()
 }
 
 void bootstrap();

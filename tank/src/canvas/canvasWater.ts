@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import modelWater from '../models/modelWater'
 
-class Water extends canvasAbstract implements canvasInterface {
+export default new (class extends canvasAbstract implements canvasInterface {
     num(): number {
         return config.quantity.water;
     }
@@ -15,7 +15,6 @@ class Water extends canvasAbstract implements canvasInterface {
         super.createModels()
         super.renderModels()
     }
-}
+})('water')
 
-export default new Water()
 

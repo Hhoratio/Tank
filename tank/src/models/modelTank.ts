@@ -3,22 +3,23 @@ import { image } from './../toolsService/image';
 import modelAbstract from "./modelAbstract";
 import _ from 'lodash'
 import config from '../config';
-import water from '../canvas/canvasWater'
-import cement from '../canvas/canvasCement'
-import wall from '../canvas/canvasWall'
+import canvasTank from '../canvas/canvasTank';
+import tools from "../tools/collide"
 
 export default class extends modelAbstract implements modelInterface {
-
+    canvas: canvasInterface = canvasTank
     name: string = 'tank'
     
     image() {
         let tankDirection = `${this.name}${_.upperFirst(this.direction)}`
         return image.get(tankDirection as keyof typeof config.image)!
     }
-
     render() {
-        super.draw()
+        // super.draw()
         this.move()
+        if(_.random(200) == 1) {
+            this.direction = directionEnum.bottom
+        }
     }
 
     protected move() {
@@ -39,7 +40,8 @@ export default class extends modelAbstract implements modelInterface {
                     x ++
                     break;
             }
-            if(this.isCollide(x, y) === true) {
+            
+            if(tools.modelCollide(x, y) || tools.borderCollide(x, y)) {
                 this.randomDirection()
             } else {
                 this.x = x;
@@ -48,31 +50,5 @@ export default class extends modelAbstract implements modelInterface {
             }
         }
         super.draw()
-    }
-
-    /* 檢測畫布碰撞 */
-    protected isCollide(x: number, y: number): boolean {
-        if(x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height) {
-            return true
-        } 
-
-        const models = [...wall.models, ...cement.models, ...water.models]
-        return models.some(model => {
-            let status = 
-                x + this.width <= model.x || 
-                x >= model.x + this.width ||
-                y + this.height <= model.y ||
-                y >= model.y + this.y 
-            
-            return !status
-        }) 
-        
-    }
-    
-    /* 隨機產生坦克方向 */ 
-    /* 由 modelAbstract 統一調用(一次)*/
-    // protected randomDirection() {
-    //     this.direction = Object.keys(directionEnum)[Math.floor(Math.random() * 4)] as directionEnum
-    // }
-
+    } 
 }

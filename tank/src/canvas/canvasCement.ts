@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import modelCement from '../models/modelCement'
 
-class Cement extends canvasAbstract implements canvasInterface {
+export default new (class extends canvasAbstract implements canvasInterface {
     num(): number {
         return config.quantity.cement;
     }
@@ -14,6 +14,4 @@ class Cement extends canvasAbstract implements canvasInterface {
         super.createModels();
         super.renderModels();
     }
-}
-
-export default new Cement();
+})('cement')
