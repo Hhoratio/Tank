@@ -8,6 +8,10 @@ import tankLeft from "./static/images/tank/left.gif";
 import tankRight from "./static/images/tank/right.gif";
 import bullet from "./static/images/bullet/bullet.jpg"
 import symbol from "./static/images/symbol/symbol.png"
+import playerTop from "./static/images/player/top.gif"
+import playerBottom from "./static/images/player/bottom.gif"
+import playerLeft from "./static/images/player/left.gif"
+import playerRight from "./static/images/player/right.gif"
 
 export default {
     canvas: {
@@ -36,6 +40,10 @@ export default {
         tankRight,
         bullet,
         symbol,
+        playerTop,
+        playerBottom,
+        playerLeft,
+        playerRight
     },
     tanks: {
         enemy: {

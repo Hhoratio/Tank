@@ -23,4 +23,4 @@ export default new (class extends canvasAbstract implements canvasInterface {
             this.models.push(instance)
         })
     }
-})('boss')
+})('symbol')

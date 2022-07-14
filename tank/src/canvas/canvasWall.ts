@@ -18,21 +18,22 @@ export default new (class extends canvasAbstract implements canvasInterface {
     }
 
     protected createBossWall() {
-        const canvasWidth = config.canvas.width
-        const canvasHeight = config.canvas.height
-        const modelWallWidth = config.picture.width
-        const modelWallHeight = config.picture.height
+        /* cw = canvasWidth, ch = canvasHeight, mw = modelWallWidth, mh = modelWallHeight */
+        const cw = config.canvas.width
+        const ch = config.canvas.height
+        const mw = config.picture.width
+        const mh = config.picture.height
 
         const bossWall = [
-            {x: (canvasWidth / 2) - modelWallWidth * 3 , y: canvasHeight - modelWallHeight},
-            {x: (canvasWidth / 2) - modelWallWidth * 3 , y: canvasHeight - modelWallHeight * 2},
-            {x: (canvasWidth / 2) - modelWallWidth * 3 , y: canvasHeight - modelWallHeight * 3},
-            {x: (canvasWidth / 2) - modelWallWidth * 2 , y: canvasHeight - modelWallHeight * 3},
-            {x: (canvasWidth / 2) - modelWallWidth , y: canvasHeight - modelWallHeight * 3},
-            {x: (canvasWidth / 2), y: canvasHeight - modelWallHeight * 3},
-            {x: (canvasWidth / 2) + modelWallWidth, y: canvasHeight - modelWallHeight * 3},
-            {x: (canvasWidth / 2) + modelWallWidth, y: canvasHeight - modelWallHeight * 2},
-            {x: (canvasWidth / 2) + modelWallWidth, y: canvasHeight - modelWallHeight},
+            {x: (cw / 2) - mw * 3 , y: ch - mh},
+            {x: (cw / 2) - mw * 3 , y: ch - mh * 2},
+            {x: (cw / 2) - mw * 3 , y: ch - mh * 3},
+            {x: (cw / 2) - mw * 2 , y: ch - mh * 3},
+            {x: (cw / 2) - mw , y: ch - mh * 3},
+            {x: (cw / 2), y: ch - mh * 3},
+            {x: (cw / 2) + mw, y: ch - mh * 3},
+            {x: (cw / 2) + mw, y: ch - mh * 2},
+            {x: (cw / 2) + mw, y: ch - mh},
         ]
         bossWall.forEach(position => {
             const model = this.model() as ModelConstructor;

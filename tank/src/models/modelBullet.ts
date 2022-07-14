@@ -6,6 +6,8 @@ import config from '../config';
 import tools from "../tools/collide"
 import wall from "../canvas/canvasWall"
 import cement from '../canvas/canvasCement';
+import player from '../canvas/canvasPlayer';
+import tank from '../canvas/canvasTank'
 
 export default class extends modelAbstract implements modelInterface {
     canvas: canvasInterface = canvasBullet;
@@ -26,31 +28,31 @@ export default class extends modelAbstract implements modelInterface {
     protected bulletMove(): void {
         let x = this.x
         let y = this.y
+        let speed = this.tank.name === 'player'? 5 : 2
         switch(this.direction) {
             case directionEnum.top:
-                y -= 2
+                y -= speed
                 break
             case directionEnum.bottom: 
-                y += 2
+                y += speed
                 break
             case directionEnum.left: 
-                x -= 2
+                x -= speed
                 break
             case directionEnum.right: 
-                x += 2
+                x += speed
                 break
         }
 
-        const modelTouch = tools.modelCollide(x, y, 2, 2, [...wall.models, ...cement.models])
+        const modelTouch = tools.modelCollide(x, y, 2, 2, 
+            [...wall.models, ...cement.models, ...player.models, ...tank.models])
 
         if(tools.borderCollide(x, y, 2, 2)) {
             this.destroy()     
-        } else if(modelTouch) {
+        } else if(modelTouch && modelTouch.name !== this.tank.name) {
             this.destroy() 
-            if(modelTouch.name == 'wall') {
-                modelTouch.destroy()
-                this.explode(modelTouch)
-            }
+            if(modelTouch.name !== 'cement') modelTouch.destroy()
+            this.explode(modelTouch)
         } else {
             this.x = x
             this.y = y

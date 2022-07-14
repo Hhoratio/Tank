@@ -8,6 +8,7 @@ import cement from './canvas/canvasCement'
 import tank from './canvas/canvasTank'
 import bullet from "./canvas/canvasBullet";
 import boss from "./canvas/canvasSymbol";
+import player from "./canvas/canvasPlayer";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.width = `${config.canvas.width}px`;
@@ -25,6 +26,7 @@ async function bootstrap() {
     tank.render();
     bullet.render()
     boss.render()
+    player.render()
 }
 
 void bootstrap();

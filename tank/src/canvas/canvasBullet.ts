@@ -1,6 +1,7 @@
 import canvasAbstract from "./canvasAbstract";
 import modelBullet from '../models/modelBullet'
 import canvasTank from "./canvasTank";
+import canvasPlayer from "./canvasPlayer";
 
 export default new (class extends canvasAbstract implements canvasInterface {
     num(): number {
@@ -15,7 +16,7 @@ export default new (class extends canvasAbstract implements canvasInterface {
         setInterval(() => {
             this.createBullet()
             this.renderModels()
-        }, 30)
+        }, 50)
     }
 
     /* 子彈必須根據實例化的坦克生成 */
@@ -26,5 +27,9 @@ export default new (class extends canvasAbstract implements canvasInterface {
                 this.models.push(new modelBullet(tank))
             } 
         })    
-    }    
+    }   
+    
+    playerBullet() {
+        this.models.push(new modelBullet(canvasPlayer.models[0]))        
+    }
 })('bullet')
