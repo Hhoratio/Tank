@@ -10,8 +10,12 @@ body {
         // width: 900px;
         // height: 600px;
         background-color: #333;
+        background-image: url(./static/images/cover/cover3.png);
+        background-size: cover;
+        background-position: center;
         border: solid 5px #ddd;
         position: relative;
+        cursor: pointer;
         canvas {
             position: absolute;
         }

@@ -27,4 +27,5 @@ interface canvasInterface {
     ctx: CanvasRenderingContext2D
     removeModel(model: modelInterface): void
     renderModels(): void
+    stop?(): void
 }

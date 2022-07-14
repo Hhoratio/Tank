@@ -8,6 +8,7 @@ import wall from "../canvas/canvasWall"
 import cement from '../canvas/canvasCement';
 import player from '../canvas/canvasPlayer';
 import tank from '../canvas/canvasTank'
+import symbol from '../canvas/canvasSymbol'
 
 export default class extends modelAbstract implements modelInterface {
     canvas: canvasInterface = canvasBullet;
@@ -45,7 +46,7 @@ export default class extends modelAbstract implements modelInterface {
         }
 
         const modelTouch = tools.modelCollide(x, y, 2, 2, 
-            [...wall.models, ...cement.models, ...player.models, ...tank.models])
+            [...wall.models, ...cement.models, ...player.models, ...tank.models, ...symbol.models])
 
         if(tools.borderCollide(x, y, 2, 2)) {
             this.destroy()     

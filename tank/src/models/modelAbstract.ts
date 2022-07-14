@@ -1,3 +1,4 @@
+import audio from "../audio";
 import config from "../config";
 import { directionEnum } from './../enum/directionEnum';
 
@@ -33,6 +34,7 @@ export default abstract class modelAbstract {
 	}
 
 	protected explode(model: modelInterface) {
+		audio.explode()
 		Array(...Array(8).keys()).reduce((promise, index) => {
 			return new Promise((resolve) => {
 				setTimeout(() => {

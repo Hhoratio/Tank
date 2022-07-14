@@ -4,6 +4,7 @@ import modelTank from '../models/modelTank'
 import position from "../toolsService/position";
 
 export default new (class extends canvasAbstract implements canvasInterface {
+    intervalId: number = 0
     num() {
         return config.quantity.tank
     }
@@ -11,12 +12,16 @@ export default new (class extends canvasAbstract implements canvasInterface {
     model() {
         return modelTank
     }
-
+ 
     render(): void {
         this.createModels();
         this.renderModels();
 
-        setInterval(()=> this.renderModels(), config.tanks.enemy.speed)
+        this.intervalId = setInterval(()=> this.renderModels(), config.tanks.enemy.speed)
+    }
+
+    stop() {
+        clearInterval(this.intervalId)
     }
 
     protected createModels() {
